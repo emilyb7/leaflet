@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Map, Marker, Popup, TileLayer, } from 'react-leaflet';
 import Leaflet from 'leaflet';
+import MarkerClusterGroup from 'react-leaflet-markercluster';
 
 import './App.css';
 import './leaflet.css'
@@ -15,20 +16,25 @@ class App extends Component {
       iconSize: [38, 40],
     });
 
+    const coords = [
+      [51.5295318, -0.0444836],
+      [51.5294086, -0.0444392],
+    ];
+
+    const markers = coords.map(point => <Marker position={point} icon={icon} />)
+
     return (
       <div className="App">
         <h1>Leaflet with React</h1>
-          <Map center={position} zoom={13}>
-            <TileLayer
-              url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              />
-            <Marker position={position} icon={icon}>
-              <Popup>
-                <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
-              </Popup>
-            </Marker>
-          </Map>
+        <Map center={position} zoom={13} maxZoom={18}>
+          <TileLayer
+            url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          />
+        <MarkerClusterGroup>
+            { markers }
+          </MarkerClusterGroup>
+        </Map>
       </div>
     );
   }
