@@ -2,6 +2,8 @@
 
 ## Simple example
 
+A framework-free example with basic HTML, JS and CSS can be found in the `simple` directory.
+
 ## Leaflet with React
 
 Bunch of packages need to be installed:
