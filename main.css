@@ -1,0 +1,7 @@
+body {
+  background-color: PaleGreen;
+  font-family: monospace;
+  margin: 0;
+}
+
+#mapid { height: 90vh; }
